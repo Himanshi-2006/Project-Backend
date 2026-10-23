@@ -89,3 +89,4 @@ The Python YOLO/OpenCV pipeline POSTs each detection (JSON above) to `/api/incid
 ## Limitations / before real deployment
 No authentication or authorization (anyone who can reach the API can post or PATCH). Needed: API key or JWT for the AI module, user login/roles for the dashboard, HTTPS, rate limiting, a managed database not exposed publicly, backups.
 Future: Alembic-style tooling is not needed (SQL migrations exist); add WebSocket/live updates, image evidence storage, smarter matching, clustering on the map.
+# Project-Backend
