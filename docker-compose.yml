@@ -1,0 +1,14 @@
+# LOCAL DEVELOPMENT ONLY. In production use a managed PostgreSQL+PostGIS and never publish port 5432.
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    environment:
+      POSTGRES_USER: urban_user
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-local_dev_password}
+      POSTGRES_DB: urban_db
+    ports: ["127.0.0.1:5432:5432"]   # bound to this computer only
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./docker/create-test-db.sql:/docker-entrypoint-initdb.d/create-test-db.sql:ro
+volumes:
+  pgdata:

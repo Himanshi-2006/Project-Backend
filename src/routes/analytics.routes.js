@@ -1,0 +1,10 @@
+import { Router } from 'express';
+import { validate } from '../middleware/validate.js';
+import { asyncHandler as h } from '../utils/asyncHandler.js';
+import { rangeQuery, hotspotQuery } from '../schemas/incident.schema.js';
+import * as c from '../controllers/analytics.controller.js';
+const r = Router();
+r.get('/summary', h(c.summary));
+r.get('/traffic', validate(rangeQuery, 'query'), h(c.traffic));
+r.get('/hotspots', validate(hotspotQuery, 'query'), h(c.hotspots));
+export default r;
